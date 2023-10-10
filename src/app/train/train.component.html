@@ -1,0 +1,68 @@
+<div align="center">
+  <h3> Insert Customer data</h3>
+  <br><br>
+
+  <form #insertform= "ngForm" (ngSubmit)="insertdata(insertform)" >
+   
+    <h2>Trainee Details</h2>
+    <table>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone no</th>
+      <th>Package</th>
+      <th>Trainer</th>
+    <tr>
+    <td><input type="number" id="tid" name="tid" #tid (ngModel)="tid"></td>
+    <td><input type="text" id="tname" name="tname" #tname (ngModel)="tname"></td>
+    <td><input type="number" id="phno" name="phno" #phno (ngModel)="phno"></td>
+   <td><select id="pacage" name="pacage" #pacage (ngModel)="pacage">
+      <option value="standard">Standard</option>
+      <option value="premium">Premium</option>
+      <option value="platinum">Platinum</option>
+    </select>
+  </td> 
+  <td><select id="trainer" name="trainer" #trainer (ngModel)="trainer">
+    <option value="trainer1">John Doe</option>
+    <option value="trainer2">Andrew</option>
+    <option value="trainer3">Steve</option>
+  </select></td>
+    <td><input type="submit" value="Insert"></td>
+    <td><button (click)="loadTrainData()">Save</button></td>
+  </tr>
+    </table>
+     </form>
+
+
+
+
+</div>
+
+<div align="center">
+    <h3>Train List</h3>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>TID</th>
+          <th>tNAME</th>
+          <th>phno</th>
+          <th>pacage</th>
+          <th>trainer</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let train of data">
+          <td>{{ train.tid }}</td>
+          <td><input [(ngModel)]="train.tname"></td>
+          <td><input [(ngModel)]="train.phno"></td>
+          <td><input [(ngModel)]="train.pacage"></td>
+          <td><input [(ngModel)]="train.trainer"></td>
+          <td>
+            <button (click)="updateRow(train)">Update</button>
+            <button (click)="deleteRow(train)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
